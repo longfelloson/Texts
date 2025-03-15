@@ -2,9 +2,9 @@ from datetime import datetime, timezone
 from typing import Optional
 from pydantic import UUID4
 from sqlalchemy import (
-    and_, 
     desc, 
-    insert, 
+    insert,
+    or_,
     select, 
     delete as delete_, 
 )
@@ -37,14 +37,15 @@ async def get_all(
     session: AsyncSession,
     created_by: UUID4 = None,
 ) -> list[Text]:
-    stmt = select(Text).where(Text.expires_at > datetime.now(timezone.utc))
+    stmt = select(Text).where(
+        or_(
+            Text.expires_at > datetime.now(timezone.utc), 
+            Text.expires_at.is_(None),
+        ),
+        Text.created_by == created_by,
+    )
     if created_by:
-        stmt = stmt.where(
-            and_(
-                Text.created_by == created_by, 
-                Text.expires_at > datetime.now(timezone.utc),
-            )
-        )
+        stmt = stmt.where(Text.created_by == created_by)
 
     texts = await session.execute(
         stmt
