@@ -19,7 +19,7 @@ async def get_access_token(
     if not user:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST, 
-            detail="User with this email"
+            detail="User with this email doesn't exists"
         )
     
     hashed_password = get_hashed_password(credentials.password)
