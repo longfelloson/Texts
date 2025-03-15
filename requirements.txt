@@ -1,0 +1,11 @@
+fastapi
+pydantic
+pydantic-settings
+passlib
+PyJWT
+sqlalchemy
+uvicorn
+python-dotenv
+asyncpg
+pydantic[email]
+Jinja2

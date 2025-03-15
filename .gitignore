@@ -1,0 +1,21 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.env
+
+*.log
+
+# Ignore compiled code
+*.pyc
+*.pyo
+
+venv/
+.env/
+
+tests/
+
+.vscode/
+.idea/
+*.swp

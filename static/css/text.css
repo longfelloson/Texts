@@ -1,0 +1,39 @@
+main {
+    display: flex;
+    justify-content: center;
+}
+
+#text {
+    width: 40%;
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+
+.header, .body, .delete {
+    text-align: center;
+    display: inline-block;
+    border: 3px solid #012a4a;
+    border-radius: 20px;
+    padding: 20px;
+    font-size: 18px;
+    background-color: white;
+    
+    max-width: 100%; /* Prevents it from exceeding parent */
+    
+    word-wrap: break-word; /* Breaks long words */
+    overflow-wrap: break-word; /* Ensures text wraps properly */
+    white-space: normal; /* Ensures text wraps */
+}
+
+.delete {
+    background-color: #012a4a;
+    color: white;
+}
+
+.delete:hover {
+    background-color: white;
+    background-color: #013a65;
+}
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="/static/css/register.css">
+            <link rel="stylesheet" href="/static/css/main.css">
+            <title>Texts | Sign up</title>
+        </head>
+    </head>
+    <body>
+        <main>
+            <div class="register">
+                <span class="text">REGISTRATION</span>
+                <form onsubmit="registerUser(event)">
+                    <label for="email"></label>
+                    <input type="email" id="email" placeholder="Enter an email: " required>
+                    <label for="password"></label>
+                    <input type="password" id="password" placeholder="Enter a password: " required>
+                    <button type="submit" id="register">SIGN UP</button>
+                </form>
+            </div>
+            <div class="login">
+                <a href="/login">
+                    <button id="login">LOG IN</button>
+                </a>
+            </div>
+        </main>
+        <script src="/static/js/auth/register.js"></script>
+    </body>
+</html>

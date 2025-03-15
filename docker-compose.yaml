@@ -1,0 +1,35 @@
+services:
+  site:
+    container_name: texts_site
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=db
+    command: bash -c 'while !</dev/tcp/db/5432; do sleep 1; done; uvicorn main:app --host 0.0.0.0 --port 8000'
+    networks:
+      - texts-network
+
+  db:
+    image: postgres:latest
+    container_name: texts_db
+    ports:
+      - "${DB_PORT}:5432"
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - texts-network
+
+volumes:
+  postgres-data:
+
+networks:
+  texts-network:
+    driver: bridge
